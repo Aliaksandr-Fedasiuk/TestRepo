@@ -25,6 +25,24 @@ public class App {
         Developer developer = (Developer) context.getBean("dev");
         System.out.println(developer.toString());
 
+        Developer developer1 = (Developer) context.getBean("dev1");
+        developer1.setCoffeConsumer(true);
+        System.out.println(developer1.toString());
+
+        Developer developer2 = (Developer) context.getBean("dev2");
+        System.out.println(developer2.toString());
+
+        Developer developer3 = (Developer) context.getBean("dev3");
+        System.out.println(developer3.toString());
+
+        Developer developer4 = (Developer) context.getBean("dev4");
+        System.out.println(developer4.toString());
+
+        Project project = context.getBean("project", Project.class);
+        System.out.println(project);
+
+
+
 //        DBUtils dbUtils = new DBUtils();
 //        Connection connection = null;
 //

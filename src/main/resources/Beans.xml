@@ -14,4 +14,24 @@
         <constructor-arg value="true"/>
     </bean>
 
+    <bean id="dev2" class="com.epam.test.cource.Developer">
+        <constructor-arg value="Python"/>
+        <constructor-arg value="Pavel"/>
+        <constructor-arg value="1"/>
+        <constructor-arg value="false"/>
+    </bean>
+
+    <bean id="dev3" class="com.epam.test.cource.Developer">
+        <constructor-arg value="25"/>
+    </bean>
+
+    <bean id="dev4" class="com.epam.test.cource.Developer">
+        <constructor-arg type="int" value="25"/>
+    </bean>
+
+    <bean id="project" class="com.epam.test.cource.Project">
+        <property name="name" value="Hello World Project!"/>
+        <property name="teamLead" ref="dev"/>
+    </bean>
+
 </beans>
