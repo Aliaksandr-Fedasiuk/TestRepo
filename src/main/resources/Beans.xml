@@ -1,7 +1,10 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="dev1" class="com.epam.test.cource.Developer">
         <property name="name" value="Hello World!"/>
@@ -33,5 +36,24 @@
         <property name="name" value="Hello World Project!"/>
         <property name="teamLead" ref="dev"/>
     </bean>
+
+    <bean id="bioReactor" class="com.epam.test.cource.BioReactor">
+        <constructor-arg type="java.lang.String" value="SuperHero"/>
+        <property name="emailAdresses" ref="emailAdresses"/>
+    </bean>
+
+    <bean id="newHuman" class="com.epam.test.cource.Human" factory-bean="bioReactor" factory-method="getNewHuman">
+        <constructor-arg type="java.lang.String" value="SuperHero"/>
+    </bean>
+
+    <bean id="bioReactor2" class="com.epam.test.cource.BioReactor" init-method="createInstance"/>
+
+    <bean id="singelton" class="com.epam.test.cource.Singelton" init-method="createInstance"/>
+
+    <util:list id="emailAdresses">
+        <value>someone@something.com</value>
+        <value>someoneelse@something.com</value>
+    </util:list>
+
 
 </beans>
