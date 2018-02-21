@@ -46,11 +46,19 @@
         <constructor-arg type="java.lang.String" value="SuperHero"/>
     </bean>
 
-    <bean id="bioReactor2" class="com.epam.test.cource.BioReactor" init-method="createInstance"/>
+    <bean id="bioReactor2" class="com.epam.test.cource.BioReactor" init-method="createInstance">
+        <property name="emailAdresses">
+            <list>
+                <value type="java.lang.String">email1</value>
+                <value type="java.lang.String">email2</value>
+                <value type="java.lang.String">email3</value>
+            </list>
+        </property>
+    </bean>
 
     <bean id="singelton" class="com.epam.test.cource.Singelton" init-method="createInstance"/>
 
-    <util:list id="emailAdresses">
+    <util:list id="emailAdresses" list-class="java.util.ArrayList">
         <value>someone@something.com</value>
         <value>someoneelse@something.com</value>
     </util:list>

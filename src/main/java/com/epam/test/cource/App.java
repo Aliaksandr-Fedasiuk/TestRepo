@@ -44,6 +44,8 @@ public class App {
         BioReactor bioReactor = context.getBean("bioReactor", BioReactor.class);
         System.out.println(bioReactor.toString());
 
+        BioReactor bioReactor2 = context.getBean("bioReactor2", BioReactor.class);
+        System.out.println(bioReactor2.toString());
 
 
 //        DBUtils dbUtils = new DBUtils();
