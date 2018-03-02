@@ -28,6 +28,8 @@ AssertionFailedException, который бесполезен и неинфор�
 --esa or enablesystemassertions  (for enabling system assertion)
 --dsa or disablesystemassertions (for disabling system assertion)
 
+https://docs.oracle.com/javase/7/docs/technotes/guides/language/assert.html
+
 ======
 
 department.setDescription(resultSet.getString(2 + 1)); -- ???
