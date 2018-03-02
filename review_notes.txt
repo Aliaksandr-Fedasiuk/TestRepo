@@ -84,6 +84,53 @@ public Department addDepartment(Department department) {
 
 ======
 
+@Test(expected = org.springframework.dao.EmptyResultDataAccessException.class)
+public void deleteDepartment() {
+    Department department = departmentDao.getDepartmentById(1);
+    Assert.assertEquals("Distribution", department.getDepartmentName());
+    departmentDao.deleteDepartmentById(1);
+    departmentDao.getDepartmentById(1);
+}
 
+======
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
+    @Test
+    public void deleteDepartmentByID() {
+        departmentDao.deleteDepartmentByID(2);
+        exception.expect(EmptyResultDataAccessException.class);
+        departmentDao.getDepartmentByID(2);
+    }
+    
+    http://blog.qatools.ru/junit/junit-rules-tutorial
+
+======
+
+    @Override
+    public Department addDepartment(Department department) {
+        if (getDepartmentByName(department.getDepartmentName()) != null)
+            return null;
+        else {
+            SqlParameterSource namedParametres = new MapSqlParameterSource("department_name", department.getDepartmentName());
+            ((MapSqlParameterSource) namedParametres).addValue("description", department.getDescription());
+            namedParameterJdbcTemplate.execute(add_department_sql, namedParametres, new PreparedStatementcallback());
+            return department;
+        }
+    }
+    
+    
+    @Override
+    public boolean removeDepartmentById(int departmentid) {
+        SqlParameterSource namedParametres = new MapSqlParameterSource("department_id", departmentid);
+        Object o = namedParameterJdbcTemplate.execute(remove_department_by_id_sql, namedParametres, new PreparedStatementcallback());
+        if ((Integer) o == 1)
+            return true;
+        else
+            return false;
+    }    
+
+======
 
 
