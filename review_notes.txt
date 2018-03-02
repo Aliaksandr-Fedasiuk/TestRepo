@@ -1,0 +1,89 @@
+======
+
+public final Department addDepartment(final Department department) {
+     Assert.notNull(department, "department cannot be null");
+
+Утверждения не должны использоваться для проверки аргументов в публичных методах по следующим причинам:
+
+утверждения могут быть отключены, и проверки аргументов никогда не должны быть отключены, поскольку они 
+являются частью контракта метода со своими вызывающими абонентами.
+
+Ошибки утверждения не вызывают соответствующее исключение для недопустимых аргументов.
+Пример:
+
+    /**
+     * @throws ArithmeticException if divisor is zero
+     */ 
+    public void int divide(int divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+        ...
+    }
+Если вы использовали здесь утверждение, его можно было бы отключить, и он выбрал бы 
+AssertionFailedException, который бесполезен и неинформирован.
+
+--ea[:...|:] or enableassertions  (to enable assertion at a particular package and class level)
+--da[:...|:] or disableassertions (to disable assertion on a package or class level)
+--esa or enablesystemassertions  (for enabling system assertion)
+--dsa or disablesystemassertions (for disabling system assertion)
+
+======
+
+department.setDescription(resultSet.getString(2 + 1)); -- ???
+
+======
+
+public final Department getDepartmentById(final int departmentId) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("departmentId", departmentId);
+        try {
+            Department department = namedParameterJdbcTemplate.queryForObject(GET_DEPARTMENT_BY_ID_SQL,
+                            namedParameters, new DepartmentRowMapper());
+            return department;
+        } catch (EmptyResultDataAccessException e) { -- ???
+            return null;
+        }
+    }
+
+======
+
+@Override
+    public Department addDepartment(Department department) {
+        MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
+        mapSqlParameterSource.addValue("departmentName", department.getDepartmentName());
+        mapSqlParameterSource.addValue("description", department.getDescription());
+        namedParameterJdbcTemplate.update(ADD_DEPARTMENT_SQL, mapSqlParameterSource);
+        Department added_department = getDepartmentByName(department.getDepartmentName()); -- ???
+        return added_department;
+    }
+
+======
+
+private class Queries { -- ???
+    private static final String GET_DEPARTMENTS_SQL = "SELECT departmentId, departmentName, description FROM department";
+    private static final String GET_DEPARTMENT_BY_ID_SQL =
+            "SELECT departmentId, departmentName, description "
+                    + "FROM department WHERE departmentId = :departmentId";
+    private static final String ADD_DEPARTMENT_SQL = "INSERT INTO department (departmentName, description) "
+                    + "VALUES (:departmentName, :description)";
+    private static final String UPDATE_DEPARTMENT_SQL =
+            "UPDATE department SET departmentName = :departmentName, "
+                    + "description = :description "
+                    + "WHERE departmentId = :departmentId";
+    private static final String DELETE_DEPARTMENT_SQL = "DELETE FROM department WHERE departmentId = :departmentId";
+}
+
+======
+
+public Department addDepartment(Department department) {
+        Integer depId = (Integer) new SimpleJdbcInsert (jdbcTemplate).
+                withTableName("department").usingGeneratedKeyColumns("departmentId").
+                executeAndReturnKey(new BeanPropertySqlParameterSource(department));
+        return getDepartmentById(depId); -- ???
+}
+
+======
+
+
+
+
