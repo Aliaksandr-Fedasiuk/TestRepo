@@ -2,6 +2,7 @@
 
 public final Department addDepartment(final Department department) {
      Assert.notNull(department, "department cannot be null");
+     assert department != null
 
 Утверждения не должны использоваться для проверки аргументов в публичных методах по следующим причинам:
 
