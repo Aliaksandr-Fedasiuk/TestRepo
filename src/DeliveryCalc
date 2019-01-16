@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class DeliveryCalc {
+
+    public static void main(String[] args) {
+
+        Double weight = 0d;
+        Double distance = 0d;
+        Double rate = 1.5d;
+
+        Table table = new Table(4, 15d);
+
+        System.out.println("Hello World!");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the weight in kilograms or 'q' for quit: ");
+        String inputString = scanner.nextLine();
+        System.out.println("String read from console is: " + inputString);
+        if (!inputString.toLowerCase().equals("q")) {
+            weight = Double.parseDouble(inputString);
+        } else {
+            System.out.println("\nBye!");
+            return;
+        }
+
+
+        System.out.println("Enter the distance in kilometers  or 'q' for quit: ");
+        inputString = scanner.nextLine();
+        System.out.println("String read from console is: " + inputString + "\n");
+        if (!inputString.toLowerCase().equals("q")) {
+            distance = Double.parseDouble(inputString);
+        } else {
+            System.out.println("\nBye!");
+            return;
+        }
+
+        System.out.println("Price: " + table.getWeight()*distance*rate);
+    }
+}
