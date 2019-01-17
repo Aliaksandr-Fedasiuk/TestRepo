@@ -43,15 +43,25 @@ USE:
      ALL_CAPS for constants;
      ClassFromCapital;
      methodOrVariable;
-     
+     name of class - noun;
+     method names should start with verb e.g. get, set, do;
+     package name should follow standard company structure e.g. com.company.project.module
 
+     
 AVOID:
 - magic naumbers;
 - hungarian notation;
 - abbreviations;
 - x,y,z or another letters apart i/j;
 - file2, sum1;
-- unclear "flag", "result", "status"
+- unclear "flag", "result", "status" / "Instance", "Entity"
+- God class/Magic Hammer (huge button pattern)
+- data storage class (constants class)
+- numbers like "Test2"
+- "MyClass"
+
+
+
 
 
 
