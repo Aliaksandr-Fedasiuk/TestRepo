@@ -56,7 +56,8 @@ Continuous integration (непрерывная интеграция)
 что облегчает тестирование и сводит к минимуму возможные риски.
 
 
-Иногда мердж в основную ветку дороже разработки фичи с нуля:
+Иногда мердж в основную ветку дороже разработки фичи с нуля (разработчики вышли из контекста темы -> 
+потеря времени на вхождение в контекст, фикс бага, тестирование => увеличение стоимости разработки):
   - длинные релиз циклы
   - большое колчество багов
   - увеличение циклов разработки
@@ -81,6 +82,7 @@ Continuous integration (непрерывная интеграция)
   
 
 Jenkins:
-- http://mirrors.jenkins.io/war-stable/latest/jenkins.war
-- java -jar jenkins.war --httpPort=8080
-- install: Maven Integration plugin
+- http://mirrors.jenkins.io/war-stable/latest/jenkins.war;
+- java -jar jenkins.war --httpPort=8080;
+- install: Maven Integration plugin;
+- set in Jenkins Settings: JDK_HOME, MAVEN_HOME.
