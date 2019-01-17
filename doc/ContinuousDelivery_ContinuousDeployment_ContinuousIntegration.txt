@@ -70,3 +70,9 @@ Continuous integration (непрерывная интеграция)
   - в стэйжинг среде QA инженеры тестируют приложение;
   - дальше всё проверяется для попадания на продакшен;
   - развёртывание на продакшене.
+  
+
+Jenkins:
+- http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+- java -jar jenkins.war --httpPort=8080
+- install: Maven Integration plugin
