@@ -1,0 +1,36 @@
+1. install maven
+2. intellij "add framework support" -> maven
+3. add 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build> 
+
+4. mvn clean install
+5. install git
+6. create .gitignore
+7. git init
+8. git add .
+9. git status
+10. git config --global user.email "Aliaksandr_Fedasiuk@epam.com"
+11. git config --global user.name "Aliaksandr Fedasiuk"
+12. git commit -m "First commit"
+13. git status
+14. <create empty repo on github>
+15. git remote add origin https://github.com/Aliaksandr-Fedasiuk/DeliveryCost
+16. git remote -v
+17. git push origin master
+18. git status
+19. git branch -a
