@@ -61,8 +61,99 @@ AVOID:
 - "MyClass"
 
 
+Absolute name
+parser.parse(new FileReader("/home/vital/IdeaProjects/Perevozka/src/Tarif.json"));
+
+Not obviously
+if (km<=10&km>=1)
 
 
+catch (Exception ex) {
+   System.out.println("Error"); --- ??
+}
+  
+public class Perevozka {
+     Perevozka() {
+         Scanner scan = new Scanner (System.in);
+         int chislo = scan.nextInt();
+         if (chislo>0)
+            km = chislo;
+         else
+            System.out.println ("Vvedite pravilnoe chislo");
+     }
+     
+     
+static long MAX_VALUE -> A constant holding the maximum value a long can have, 2^63-1.     
+         2`147`483`647    -> Integer.MAX_VALUE
+9`223`372`036`854`775`807 -> Long.MAX_VALUE 
+
+In Java 64-bit, long and double values were treated as two 32-bit values. That means, a 64-bit write operation is basically performed as two separate 32-bit operations.
+https://dzone.com/articles/longdouble-are-not-atomic-in-java
+    
+long creditCardNumber = 1234_5678_9012_3456L;
+long socialSecurityNumber = 999_99_9999L;
+float pi =  3.14_15F;
+long hexBytes = 0xFF_EC_DE_5E;
+long hexWords = 0xCAFE_BABE;
+long maxLong = 0x7fff_ffff_ffff_ffffL;
+byte nybbles = 0b0010_0101;
+long bytes = 0b11010010_01101001_10010100_10010010;
+    
+    
+long result;
+if (km<=10&km>=1)
+    result = (Long) jsonObject.get("1-10");
+    
+
+for (Object koefItem : jsonArray) { Object -> JSONObject
+     JSONObject item = (JSONObject) koefItem;
+
+
+public void setKoef() { --> name, magic button, every time reading file
+        try {
+            File fXmlFile = new File(filePath);
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(fXmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("group");
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+                Node nNode = nList.item(temp);
+                Element eElement = (Element) nNode;
+                double start = Double.parseDouble(eElement.getElementsByTagName("start").item(0).getTextContent());
+                double end = Double.parseDouble(eElement.getElementsByTagName("end").item(0).getTextContent());
+                double koef = Double.parseDouble(eElement.getElementsByTagName("koef").item(0).getTextContent());
+                if (this.weight >= start & this.weight < end) {
+                    this.koef = koef;
+                }
+            }
+            if (this.koef == 0) {
+                System.out.println("max Weight can be 5000kg, min weight 1 kg");
+            }
+        } catch (ParserConfigurationException | IOException | SAXException e) {
+            e.printStackTrace();
+        }
+
+
+
+public class ReadingFile { --- where reading file?
+    public String filePath (String fileName) throws IOException {
+        return  Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).getPath();
+    }
+}
+
+
+this.distanc = scanSet("Enter distance"); ---> where is distancE
+
+
+private Scanner scan;
+
+    {   ----> initializing block
+        scan = new Scanner(System.in);
+    }
+
+- Статический блок инициализатора будет вызываться при загрузке класса и не будет иметь доступа к переменным или методам экземпляра. Oн часто используется для создания статических переменных.
+- Нестатический блок инициализатора, с другой стороны, создается только при построении объекта, будет иметь доступ к переменным и методам экземпляра и (согласно важной поправке, предложенной @EJP), будет вызываться в начале конструктора, после того, как супер конструктор был вызван (явно или неявно) и перед вызовом любого другого последующего кода конструктора. Я видел, как он использовался, когда класс имеет несколько конструкторов и нуждается в том же коде инициализации, который требуется для всех конструкторов. Как и в случае с конструкторами, вы должны избегать вызова не конечных методов в этом блоке.
 
 
 ======
