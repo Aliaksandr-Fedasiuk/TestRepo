@@ -172,6 +172,126 @@ Map<String, String> map = new HashMap<String, String>() {{
 }};
 
 
+
+именования и непонятно о чем речь
+ScannerDeliveryParams param = new ScannerDeliveryParams();
+CreateDeliveryKoef item = new DeliveryKoefXmlImpl(param.getWeight(), "koef.xml");
+CountDeliveryCost count = new CountDeliveryCost(param.getDistanc(), param.getWeight(), item);
+
+
+DataItem data = new DataItem();
+data = getData();
+
+LOGGER.info("Calculation process");  -- ??
+BigDecimal calcResult = calculator.calculate(dataItem);
+System.out.println("The total price is " + calcResult); --??
+
+    private BigDecimal getInform(String message){
+        System.out.println(message);
+        try{
+            return scanner.nextBigDecimal();
+        }
+        catch (IllegalArgumentException | NullPointerException err){
+            LOGGER.error(ERROR_MESSAGE, err );
+        }
+        return null;  --??
+    }
+
+
+    private BigDecimal receiveScale(Map<String,BigDecimal> map , BigDecimal weight){
+       try{
+           if(weight.floatValue() <= 5){
+               return  map.get("min.weight");
+           } else if(weight.floatValue() > 5 && weight.floatValue() <= 10 ){
+               return  map.get("normal.value");
+           } else {
+               return map.get("max.value");
+           }
+       }
+       catch (NullPointerException err){  --???
+           LOGGER.error(ERROR_MESSAGE, err);
+       }
+       return null; --> ???
+
+
+        return properties.entrySet().stream().collect(
+                Collectors.toMap(e -> String.valueOf(e.getKey()),
+                        e -> new BigDecimal(e.getValue().toString()))); --> debug
+			
+public class PropertyReader implements Reader<String, BigDecimal> {  -- PropertyFileReader
+    @Override
+    public Map<String, BigDecimal> getMap(String path) throws IOException {  -- what is Map			
+			
+
+    public static void setWeight(float weight) {
+        DeliveryInformImpl.weight = weight;
+        if (weight <= 0 ) {
+            throw new IllegalArgumentException("The value can't be negative");
+        }
+    }
+    
+    
+    public class CalculatorImpl implements Calculator {
+    @Override
+    public double CalculateCost(double weight, double distance) {
+        FileInputStream fis; -- file in calc class?
+	
+	
+	
+    class Delivery {
+      private double weight;
+      private double distance;
+      Delivery() {  -- empty constructor
+      }
+      
+    
+    getTotalCost.java -- name
+    
+    
+    final BigDecimal weight = getValueByKey(properties, WEIGHT);
+    final BigDecimal distance = getValueByKey(properties, DISTANCE);
+    final BigDecimal price = getValueByKey(properties, PRICE);
+    final BigDecimal minprice = getValueByKey(properties, MINPRICE);
+    final BigDecimal midprice = getValueByKey(properties, MIDPRICE);
+    final BigDecimal maxprice = getValueByKey(properties, MAXPRICE);
+    final double mincost = weight.doubleValue()* distance.doubleValue()* minprice.doubleValue();
+    
+    
+    final String errorMessage = "Failed to read file from path [" + PATH + "]";
+    throw new PropertyExeption(errorMessage);
+    
+    
+    public DeliveryData(BigDecimal weight, BigDecimal distance, BigDecimal coefficient) {
+        if (weight.signum() <= 0 || distance.signum() <= 0 || coefficient.signum() < 0) { -- in constructor?
+            throw new IllegalArgumentException("Parameters can't be negative or zero");
+        }
+        this.coefficient = coefficient;
+        this.weight = weight;
+        this.distance = distance;
+    }
+    
+    
+    public void setCoefficient(BigDecimal coefficient) { -- in set???
+        if (coefficient.signum() <= 0) {
+            throw new IllegalArgumentException("The coefficient can't be negative");
+        }
+        this.coefficient = coefficient;
+    }
+    
+    
+    private BigDecimal selectPriceValue(Map<String, BigDecimal> valuesMap, BigDecimal weight) {
+        if (weight.doubleValue() < 15) {  ---> hardcoded values
+            return valuesMap.get("coef.min");
+        } else if (weight.doubleValue() >= 15 && weight.doubleValue() < 30) {
+            return valuesMap.get("coef.middle");
+        } else {
+            return valuesMap.get("coef.max");
+        }
+    }
+   
+    
+
+
 ======
 
 public final Department addDepartment(final Department department) {
