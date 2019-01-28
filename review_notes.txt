@@ -60,6 +60,31 @@ AVOID:
 - numbers like "Test2"
 - "MyClass"
 
+=================================================================================
+
+- Throw an exception when things go wrong
+List<String> getSearchResults(...) {
+  try {
+    List<String> results = // make REST call to search service
+    return results;
+  } catch (RemoteInvocationException e) {
+    return Collections.emptyList();
+  }
+}
+
+- Use the most specific type possible (Более того, в некоторых случаях имеет смысл использовать класс-враппер над типом, вместо самого типа. Например, вместо String phoneNumber лучше сделать враппер-класс PhoneNumber с единственным полем String value. Для перечислимых типов по возможности используйте enums.)
+
+void doOperation(String opType, Data data); 
+// where opType is "insert", "append", or "delete", this should have clearly been an enum
+
+String fetchWebsite(String url);
+// where url is "https://google.com", this should have been an URN
+
+String parseId(Input input);
+// the return type is String but ids are actually Longs like "6345789"
+
+=================================================================================
+
 
 Absolute name
 parser.parse(new FileReader("/home/vital/IdeaProjects/Perevozka/src/Tarif.json"));
@@ -67,14 +92,13 @@ parser.parse(new FileReader("/home/vital/IdeaProjects/Perevozka/src/Tarif.json")
 Not obviously
 if (km<=10&km>=1)
 
-
 catch (Exception ex) {
    System.out.println("Error"); --- ??
 }
   
 public class Perevozka {
      Perevozka() {
-         Scanner scan = new Scanner (System.in);
+         Scanner scan = new Scanner (System.in); -- logic in constuctor
          int chislo = scan.nextInt();
          if (chislo>0)
             km = chislo;
