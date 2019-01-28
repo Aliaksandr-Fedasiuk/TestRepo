@@ -62,6 +62,24 @@ AVOID:
 
 =================================================================================
 
+Class and method size: Big classes and long methods tend to be more brittle.
+Repetitive code (candidate for refactoring)
+Variable and method scopes (private vs public)
+Use of good design patterns (if possible)
+Especially if you're doing TDD or disciplined unit testing, look for interfaces for most major classes; this makes it easier to build mock objects and to change implementations later.
+Javadocs meet standards.
+"Fluent" method names, that is, you want to be able to read the methods as sentences. "if object is initialized" should read
+	if(obj.isInitialized())".
+Comments reflect what the code does.
+Code does what's expected.
+
+
+In general, look for aggregation over implementing interfaces, and interfaces over inheritance.
+http://sergeyteplyakov.blogspot.com/2012/12/vs-vs.html (следует предпочесть агрегацию наследованию, предпочитайте агрегацию вместо композиции)
+https://habr.com/ru/post/325478
+
+=================================================================================
+
 - Throw an exception when things go wrong
 List<String> getSearchResults(...) {
   try {
