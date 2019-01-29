@@ -36,7 +36,9 @@
 19. git branch -a
 
 
-add travis-ci
+add travis-ci & coveralls.io
+-1. <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -> pom/properties
+0. add to pom coveralls-maven-plugin:4.3.0
 1. login https://travis-ci.org/
 2. add project to travis-ci
 3. enable project on travice (https://travis-ci.org/organizations/Brest-Java-Course-2019/repositories)
@@ -48,3 +50,4 @@ add travis-ci
         - mvn clean test cobertura:cobertura coveralls:report
         
 5. add travis-ci to README.md
+6. add coveralls.io to README.md
