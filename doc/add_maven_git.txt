@@ -39,7 +39,7 @@
 add travis-ci
 1. login https://travis-ci.org/
 2. add project to travis-ci
-3. enable project on travice
+3. enable project on travice (https://travis-ci.org/organizations/Brest-Java-Course-2019/repositories)
 4. add .travis.yml
     language: java
     jdk:
