@@ -51,3 +51,9 @@ add travis-ci & coveralls.io
         
 5. add travis-ci to README.md
 6. add coveralls.io to README.md
+
+Jenkins:
+- http://mirrors.jenkins.io/war-stable/latest/jenkins.war;
+- java -jar jenkins.war --httpPort=8080;
+- install: Maven Integration plugin;
+- set in Jenkins Settings: JDK_HOME, MAVEN_HOME.
